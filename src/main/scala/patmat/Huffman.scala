@@ -82,6 +82,15 @@ object Huffman {
     incr(chars, List())
   }
 
+  def times2(chars: List[Char]): List[(Char, Int)] ={
+    def timeOfChar(x: Char, chars: List[Char], acc: Int): List[(Char, Int)]={
+      if (chars.isEmpty) List((x, acc))
+      else if (chars.head == x) timeOfChar(x, chars.tail, acc+1)
+      else timeOfChar(x, chars.tail, acc)
+    }
+    timeOfChar(chars.head,chars,0)
+  }
+
       /**
    * Возвращает список узлов `Leaf` по заданной таблице частотности `freqs`.
    *
